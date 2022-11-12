@@ -5,6 +5,6 @@ def john(n):
     nb = nb*2
     return nb
 
-n = int(input("Entrez le nombre n : plus n se rapproche d'infini, plus pi est grand.\n"))
+n = int(input("Entrez le nombre n : plus n se rapproche d'infini, plus pi est précis.\n"))
 
 print(john(n))
