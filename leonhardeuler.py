@@ -14,6 +14,6 @@ def euler(n):
         nb = nb+ (numerateur/denominateur)
     nb = nb*2
     return nb
-n = int(input("Entrez le nombre n : plus n se rapproche d'infini, plus pi est grand.\n"))
+n = int(input("Entrez le nombre n : plus n se rapproche d'infini, plus pi est précis.\n"))
 
 print(euler(n))
