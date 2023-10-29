@@ -1,0 +1,58 @@
+
+from typing import List
+
+
+def afficher_chemin(n: int, dieux: List[str]) -> None:
+    """
+    :param n: le nombre de dieux
+    :param dieux: liste des prénoms et noms des dieux séparés par un espace
+    """
+    dieux = [(val.split(" ")[0],val.split(" ")[1]) for val in dieux]
+    print(dieux)
+    comb_possible=[]
+    
+    i = 0
+    chercher_prenom=True
+    while i<=n:
+        print(comb_possible)
+        dieu_marche = True
+        if chercher_prenom:
+            dieu_actuel = dieux[i]
+            comb_possible.append(dieu_actuel)
+            for j in range(i+1,n):
+                if dieux[j][0] == dieu_actuel[0]:
+                    comb_possible.append(dieux[j])
+                    del dieux[j]
+                    chercher_prenom = False
+                    i=i+1
+                    break
+                if j==n:
+                    chercher_prenom = False
+                    dieu_marche = False
+        if chercher_prenom == False:
+            dieu_actuel = dieux[i]
+            comb_possible.append(dieu_actuel)
+            for j in range(i+1,n):
+                if dieux[j][1] == dieu_actuel[1]:
+                    comb_possible.append(dieux[j])
+                    del dieux[j]
+                    chercher_prenom = True
+                    i=i+1
+                    break
+                if j==n:
+                    chercher_prenom = True
+                    dieu_marche = False
+                
+        if dieu_marche == False:
+            dieux.append(comb_possible[i])
+            del comb_possible[i]
+    print(comb_possible)
+            
+    pass
+
+
+if __name__ == "__main__":
+    n = int(input())
+    dieux = [input() for _ in range(n)]
+    afficher_chemin(n, dieux)
+
